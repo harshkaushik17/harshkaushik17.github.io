@@ -1,0 +1,16 @@
+---
+title: "All Mutual Funds"
+---
+
+```{r}
+allmf <- read.csv("topmf.csv")
+allmf
+hist(allmf$ReturnSI,col='blue',breaks=30 ,main='Histogram')
+View(allmf)
+#allmf$scheme
+```
+
+```{r}
+library(psych)
+pairs.panels(allmf)
+```

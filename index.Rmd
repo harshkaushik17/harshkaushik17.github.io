@@ -1,0 +1,6 @@
+---
+title: "Data Analysis of Mutual Fund Using R"
+---
+
+Hello Watchers! This data is analysed by Harsh Kaushik.  
+![](Growth_Mutual.jpg){width=1000}

@@ -1,0 +1,22 @@
+---
+title: "Top Performing Funds (*****)"
+##listing: Five star funds
+---
+
+```{r}
+fivestarfunds <- read.csv("fivestarfunds.csv")
+#head(fivestarfunds)
+fivestarfunds
+#summary(fivestarfunds)
+str(fivestarfunds)
+hist(fivestarfunds$NAV,col='green',breaks=30 ,main='Histogram of NAV')
+```
+
+```{r}
+library(psych)
+pairs.panels(fivestarfunds)
+```
+
+```{r}
+plot(fivestarfunds)
+```

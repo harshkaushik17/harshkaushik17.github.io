@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>All Mutual Funds</title>
+
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Mutual Funds</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="allmf.html">ALL MFs</a>
+</li>
+<li>
+  <a href="fivestar.html">Top Performing Funds</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="contacts.html">Contact</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">All Mutual Funds</h1>
+
+</div>
+
+
+<pre class="r"><code>allmf &lt;- read.csv(&quot;topmf.csv&quot;)
+allmf</code></pre>
+<pre><code>##                                    ï..FundName               Category      AUM
+## 1     Aditya Birla Sun Life Digital India Fund          Equity-Sector  2658.13
+## 2    Aditya Birla Sun Life Infrastructure Fund          Equity-Sector   557.41
+## 3           Aditya Birla Sun Life Mid Cap Fund     Equity-Diversified  3381.81
+## 4         Aditya Birla Sun Life Small Cap Fund     Equity-Diversified  2969.16
+## 5                          Axis Small Cap Fund     Equity-Diversified  7362.16
+## 6                          Baroda Mid cap Fund     Equity-Diversified    84.71
+## 7                       BOI AXA Small Cap Fund     Equity-Diversified   193.62
+## 8            Canara Robeco Infrastructure Fund          Equity-Sector   171.37
+## 9                 Canara Robeco Small Cap Fund     Equity-Diversified  1697.01
+## 10                                    CPSE ETF             ETF-Others 15950.09
+## 11                        DSP India Tiger Fund     Equity-Diversified  1301.52
+## 12                          DSP Small Cap Fund     Equity-Diversified  8269.57
+## 13                      Edelweiss Mid Cap Fund     Equity-Diversified  1749.56
+## 14          Edelweiss Recently Listed IPO Fund          Equity-Sector   904.26
+## 15                    Edelweiss Small Cap Fund     Equity-Diversified  1057.30
+## 16                   Franklin Build India Fund          Equity-Sector  1132.07
+## 17       Franklin India Smaller Companies Fund     Equity-Diversified  7229.32
+## 18                    HDFC Infrastructure Fund          Equity-Sector   604.07
+## 19                         HDFC Small Cap Fund     Equity-Diversified 13182.11
+## 20             HSBC Infrastructure Equity Fund     Equity-Diversified   110.02
+## 21                  HSBC Small Cap Equity Fund     Equity-Diversified   335.29
+## 22           ICICI Prudential Commodities Fund          Equity-Sector   720.53
+## 23 ICICI Prudential Dividend Yield Equity Fund     Equity-Diversified   530.44
+## 24   ICICI Prudential India Opportunities Fund     Equity-Diversified  4182.94
+## 25        ICICI Prudential Infrastructure Fund          Equity-Sector  1446.95
+## 26                     ICICI Prudential IT ETF             ETF-Others  2436.50
+## 27             ICICI Prudential Smallcap Fund.    Equity-Global Funds  3304.22
+## 28            ICICI Prudential Technology Fund          Equity-Sector  6886.59
+## 29   ICICI Prudential Thematic Advantage Fund  Fund of Funds-Domestic    95.69
+## 30                         IDBI Small Cap Fund     Equity-Diversified   129.69
+## 31               IDFC Emerging Businesses Fund     Equity-Diversified  1433.49
+## 32                    IDFC Infrastructure Fund          Equity-Sector   663.06
+## 33                    IDFC Sterling Value Fund     Equity-Diversified  4206.75
+## 34           Invesco India Infrastructure Fund          Equity-Sector   333.69
+## 35                 Invesco India Smallcap Fund     Equity-Diversified  1226.92
+## 36 Kotak Infrastructure &amp; Economic Reform Fund          Equity-Sector   462.33
+## 37                          Kotak PSU Bank ETF             ETF-Others   194.62
+## 38                        Kotak Small Cap Fund     Equity-Diversified  6180.02
+## 39                L&amp;T Emerging Businesses Fund     Equity-Diversified  7554.14
+## 40                     L&amp;T Infrastructure Fund          Equity-Sector  1356.28
+## 41     Mahindra Manulife Mid Cap Unnati Yojana     Equity-Diversified   844.56
+## 42   Mahindra Manulife Multi Cap Badhat Yojana     Equity-Diversified   853.87
+## 43                     Mirae Asset Midcap Fund     Equity-Diversified  6736.74
+## 44                Motilal Oswal Midcap 100 ETF             ETF-Others    82.56
+## 45                Motilal Oswal Midcap 30 Fund     Equity-Diversified  2419.25
+## 46 Motilal Oswal Nifty Smallcap 250 Index Fund           Equity-Index   222.84
+## 47       Nippon India Capital Builder Fund IV      Equity-Diversified    48.96
+## 48                   Nippon India ETF Nifty IT             ETF-Others   881.40
+## 49              Nippon India ETF PSU Bank BeES             ETF-Others   387.55
+## 50                    Nippon India Growth Fund     Equity-Diversified 11919.02
+## 51                 Nippon India Multi Cap Fund     Equity-Diversified 10969.56
+## 52  Nippon India Nifty Smallcap 250 Index Fund           Equity-Index   231.19
+## 53             Nippon India Power &amp; Infra Fund          Equity-Sector  1678.63
+## 54                 Nippon India Small Cap Fund     Equity-Diversified 17197.20
+## 55        PGIM India Midcap Opportunities Fund     Equity-Diversified  3388.27
+## 56                    Principal Small Cap Fund     Equity-Diversified   490.89
+## 57                           Quant Active Fund     Equity-Diversified  1304.41
+## 58                      Quant Consumption Fund          Equity-Sector    37.75
+## 59                       Quant ESG Equity Fund     Equity-Diversified    27.96
+## 60                   Quant Infrastructure Fund          Equity-Sector   147.21
+## 61                          Quant Mid Cap Fund               Balanced   205.24
+## 62                        Quant Small Cap Fund     Equity-Diversified  1241.37
+## 63                              Quant Tax Plan    Equity-Tax Planning   487.12
+## 64          SBI Consumption Opportunities Fund          Equity-Sector   839.33
+## 65                             SBI Contra Fund     Equity-Diversified  3106.42
+## 66                                  SBI ETF IT             ETF-Others   855.45
+## 67               SBI Long Term Advantage Fund     Equity-Tax Planning   198.16
+## 68          SBI Magnum Childrens Benefit Fund   Speciality-Child Care   322.06
+## 69                      SBI Magnum Midcap Fund     Equity-Diversified  6425.59
+## 70           SBI Technology Opportunities Fund          Equity-Sector  1890.60
+## 71                Sundaram emerging Small Cap      Equity-Diversified   265.92
+## 72                Sundaram emerging Small Cap      Equity-Diversified   277.55
+## 73                Sundaram emerging Small Cap      Equity-Diversified   189.48
+## 74                Sundaram emerging Small Cap      Equity-Diversified   127.41
+## 75      Sundaram Infrastructure Advantage Fund          Equity-Sector   646.20
+## 76      Sundaram Long Term Tax Advantage Fund     Equity-Tax Planning    41.43
+## 77      Sundaram Long Term Tax Advantage Fund     Equity-Tax Planning    27.80
+## 78                  Sundaram Select Micro Cap      Equity-Diversified   116.01
+## 79                      Sundaram Services Fund          Equity-Sector  1923.19
+## 80                     Sundaram Small Cap Fund     Equity-Diversified  1540.84
+## 81                        Sundaram Value Fund      Equity-Diversified    42.42
+## 82                   Tata Corporate Bond Fund   Debt-Ultra Short Term    11.82
+## 83                     Tata Digital India Fund          Equity-Sector  3842.31
+## 84                    Tata Infrastructure Fund          Equity-Sector   757.74
+## 85                      Tata Medium Term Fund             Debt-Income     2.09
+## 86                         Tata Small Cap Fund     Equity-Diversified  1721.24
+## 87               Tata Treasury Advantage Fund   Debt-Ultra Short Term    14.73
+## 88                  Templeton India Value Fund     Equity-Diversified   620.67
+## 89                           Union Midcap Fund     Equity-Diversified   337.90
+## 90                        Union Small Cap Fund     Equity-Diversified   555.44
+##    Return1W Return1M Return6M Return1Y Return3Y ReturnSI
+## 1     -1.07     0.09    36.74    79.97    42.06    12.78
+## 2     -4.29    -1.39    17.73    70.25    17.82    10.78
+## 3     -2.05     2.17    30.47    69.40    20.11    22.46
+## 4     -1.74    -1.18    19.40    68.79    18.34    12.58
+## 5     -0.37     3.15    25.54    67.37    33.32    25.51
+## 6     -1.49     0.85    32.12    65.98    28.12     5.32
+## 7     -0.56     2.83    28.22    81.53       --    39.64
+## 8     -2.97     3.22    26.16    72.60    20.93    13.53
+## 9     -2.23     0.89    29.70    85.28       --    34.71
+## 10    -1.45    -4.59    18.40    65.03      6.1     7.24
+## 11    -2.13     1.61    24.44    70.63    20.27    16.65
+## 12    -1.54     1.38    24.67    70.30    27.41    18.06
+## 13    -1.50     0.05    22.53    65.14    27.44    12.54
+## 14    -0.25     2.48    35.98    76.96    35.95    22.10
+## 15    -1.39     2.25    24.12    80.40       --    37.62
+## 16    -2.25     1.26    24.88    69.15    20.03    16.83
+## 17    -2.13     2.48    28.82    76.50    21.64    15.11
+## 18    -3.80    -2.70    19.66    70.15     9.23     5.41
+## 19    -1.59    -0.29    24.61    80.44    21.05    15.83
+## 20    -2.85     1.43    24.21    79.75    14.74     6.27
+## 21    -1.12     0.58    31.88    78.82    23.51    14.25
+## 22    -4.93    -5.49    11.93    94.31       --    51.64
+## 23    -2.46    -2.64    23.57    66.17    18.35    13.86
+## 24    -2.78    -3.10    20.52    76.61       --    21.75
+## 25    -3.04    -2.09    22.26    78.12    19.06    13.79
+## 26    -0.90     0.60    39.65    70.86       --    74.50
+## 27    -2.12     2.13    31.02    87.04    31.32    12.44
+## 28    -0.10     1.54    45.42    92.39    44.93    13.78
+## 29    -1.41    -0.77    18.73    66.72     23.6    15.44
+## 30    -0.91     3.38    26.76    80.65    23.65    13.41
+## 31    -1.75    -1.45    25.57    68.82       --    59.69
+## 32    -3.93     1.77    25.70    86.91    19.36     8.81
+## 33    -2.56     0.70    21.74    76.14    20.48    17.12
+## 34    -2.05     2.47    27.32    72.21    25.85     8.65
+## 35    -1.83     0.89    27.22    80.50     28.7    28.48
+## 36    -2.36     1.04    29.34    76.66    21.17     9.08
+## 37    -3.44    -0.90    19.67    90.76    -2.47     0.46
+## 38    -0.11     3.66    31.44    92.52    36.11    18.45
+## 39    -1.74     2.79    31.23    88.68    22.66    22.09
+## 40    -3.48     2.31    27.76    73.50    15.29     6.50
+## 41    -2.33    -0.57    20.13    65.48    25.15    15.99
+## 42    -2.18    -0.01    26.06    67.04    28.59    18.03
+## 43    -2.19     0.58    22.47    67.02       --    38.81
+## 44    -2.00    -0.15    23.80    66.10       22    14.09
+## 45    -1.73     5.03    34.87    66.12    24.85    21.58
+## 46    -1.64     0.57    22.36    78.40       --    40.23
+## 47    -2.13     2.83    35.59    68.81    17.67     6.61
+## 48    -0.90     0.60    39.64    71.10       --    89.99
+## 49    -3.44    -0.90    19.82    91.19    -2.27     1.20
+## 50    -1.95     1.13    28.07    67.05    26.94    22.75
+## 51    -2.40     1.10    27.64    67.38    17.51    17.67
+## 52    -1.62     0.59    22.58    78.44       --    80.07
+## 53    -2.57     1.16    24.51    67.62    18.68    17.15
+## 54    -0.94     2.94    27.99    87.96    28.89    21.03
+## 55    -1.99     1.61    29.44    80.69    36.57    20.53
+## 56    -0.77     3.61    33.32    90.04       --    42.54
+## 57    -1.45    -0.02    20.29    80.65    33.76    19.87
+## 58    -0.95     2.06    25.11    87.59    32.93    14.52
+## 59    -0.25     3.71    28.27    85.18       --    86.32
+## 60    -1.75     3.06    30.47   109.83    37.34     5.40
+## 61    -0.07     2.83    20.98    78.84    29.17    12.77
+## 62    -2.97    -0.55    26.73   109.85    36.58    11.42
+## 63    -2.20     0.48    21.48    85.81     35.4    15.45
+## 64    -1.24     5.89    25.57    65.67    18.57    15.56
+## 65    -2.26     1.31    22.81    71.29     25.2    19.23
+## 66    -0.90     0.60    39.68    71.28       --    64.86
+## 67    -2.16    -1.54    33.57    82.17    35.67    27.13
+## 68    -2.35     2.48    47.45   110.03       --   108.54
+## 69    -1.57     4.53    26.32    73.57    26.98    17.29
+## 70    -0.47     2.91    40.26    79.70    39.18    16.40
+## 71    -2.26     4.23    33.64    94.70    25.87    17.63
+## 72    -2.36     4.44    34.37    93.61    24.86    12.86
+## 73    -2.29     4.00    33.05    92.37    25.57    19.02
+## 74    -2.29     3.10    26.20    74.38    26.35    25.38
+## 75    -3.25     2.76    23.30    69.61    20.76    10.83
+## 76    -2.35     3.72    34.22    96.53    23.01    12.73
+## 77    -2.41     4.01    33.66    94.68    23.05    18.98
+## 78    -2.67     2.63    35.36   101.98    23.89    10.14
+## 79    -1.17     1.45    32.73    66.49    29.32    28.05
+## 80    -1.41     0.81    25.67    79.74    24.86    17.58
+## 81     0.03     0.08    16.18    79.01    20.67     8.96
+## 82    -1.24    -0.81   112.67   113.56       --    24.07
+## 83    -0.84     0.54    43.72    91.30    42.26    25.75
+## 84    -2.24     1.87    24.77    70.70    21.51    14.07
+## 85    -1.24    -0.81   182.10   183.71       --    24.08
+## 86    -1.60     2.73    28.12    85.17    30.22    29.94
+## 87    -1.24    -0.81   150.07   151.33       --    24.08
+## 88    -2.11    -0.67    24.12    66.85    19.82    16.43
+## 89    -1.14     1.75    30.81    68.60       --    88.23
+## 90    -0.85     1.71    25.87    77.25    29.47    15.47</code></pre>
+<pre class="r"><code>hist(allmf$ReturnSI,col=&#39;blue&#39;,breaks=30 ,main=&#39;Histogram&#39;)</code></pre>
+<p><img src="ALLMF_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre class="r"><code>View(allmf)
+#allmf$scheme</code></pre>
+<pre class="r"><code>library(psych)
+pairs.panels(allmf)</code></pre>
+<p><img src="ALLMF_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+
+<p>Copyright &copy; 2022 Kaushik, Inc. All Rights reserved.</p>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
